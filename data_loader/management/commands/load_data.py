@@ -4,6 +4,7 @@ import csv
 import json
 import xml.etree.ElementTree as ET
 import os
+import requests
 
 
 class Command(BaseCommand):
@@ -14,8 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for file_path in options['files']:
-            if not os.path.exists(file_path):
-                raise CommandError(f"File not found: {file_path}")
+            file_path = self.get_file(file_path)
             file_extension = file_path.split('.')[-1]
             if file_extension == 'csv':
                 self.import_pois_from_csv(file_path)
@@ -86,6 +86,21 @@ class Command(BaseCommand):
             'average_rating': average_ratings
         }
         return poi_data
+
+    def get_file(self, file):
+        if file.startswith('http://') or file.startswith('https://'):
+            response = requests.get(file)
+            if response.status_code == 200:
+                filename = file.split('/')[-1]
+                with open(filename, 'wb') as f:
+                    f.write(response.content)
+                return filename
+            else:
+                raise CommandError("Failed to download file from the provided link.")
+        elif os.path.exists(file):
+            return file
+        else:
+            raise CommandError(f"File not found: {file}")
 
     def save_poi(self, poi_data):
         obj = PointOfInterest()
