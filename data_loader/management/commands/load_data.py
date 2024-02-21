@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand, CommandError
-from django.db import OperationalError
 from data_loader.models import PointOfInterest
 import csv
 import json
@@ -44,22 +43,25 @@ class Command(BaseCommand):
     def import_pois_from_xml(self, file_path):
         tree = ET.parse(file_path)
         root = tree.getroot()
-        for poi_element in root.findall('point_of_interest'):
+        for poi_element in root.findall('DATA_RECORD'):
             poi_data = self.extract_poi_data_xml(poi_element)
             self.save_poi(poi_data)
 
     def extract_poi_data_csv(self, data):
+        ratings = list(map(float, data['poi_ratings'].strip('{}').split(",")))
+        average_rating = sum(ratings) / len(ratings)
         poi_data = {
             'name': data['poi_name'],
             'external_id': data['poi_id'],
             'category': data['poi_category'],
-            'average_rating': float(data['poi_ratings']),
+            'average_rating': average_rating,
             'latitude': data['poi_latitude'],
             'longitude': data['poi_longitude'],
         }
         return poi_data
 
     def extract_poi_data_json(self, data):
+        average_rating = sum(data["ratings"]) / len(data["ratings"])
         poi_data = {
             'name': data['name'],
             'external_id': data['id'],
@@ -67,33 +69,33 @@ class Command(BaseCommand):
             'description': data['description'],
             'latitude': data['coordinates']['latitude'],
             'longitude': data['coordinates']['longitude'],
-            'average_rating': float(data['ratings'])
+            'average_rating': average_rating,
         }
         return poi_data
 
     def extract_poi_data_xml(self, element):
+        ratings = element.find('pratings').text
+        ratings = [float(rating) for rating in ratings.split(',')]
+        average_ratings = sum(ratings)/len(ratings)
         poi_data = {
             'name': element.find('pname').text,
             'external_id': element.find('pid').text,
             'latitude': element.find('platitude').text,
             'longitude': element.find('plongitude').text,
             'category': element.find('pcategory').text,
-            'average_rating': float(element.find('pratings').text)
+            'average_rating': average_ratings
         }
         return poi_data
 
     def save_poi(self, poi_data):
-        try:
-            obj = PointOfInterest()
-            obj.name = poi_data['name']
-            obj.external_id = poi_data['external_id']
-            obj.category = poi_data['category']
-            obj.description = poi_data.get('description')
-            obj.latitude = poi_data['latitude']
-            obj.longitude = poi_data['longitude']
-            obj.average_rating = poi_data['average_rating']
-            obj.save()
-            self.stdout.write(self.style.SUCCESS(f'data with external_id: {poi_data['external_id']} successfully saved'))
-            return True
-        except OperationalError:
-            raise CommandError(f'database connection lost')
+        obj = PointOfInterest()
+        obj.name = poi_data['name']
+        obj.external_id = poi_data['external_id']
+        obj.category = poi_data['category']
+        obj.description = poi_data.get('description')
+        obj.latitude = poi_data['latitude']
+        obj.longitude = poi_data['longitude']
+        obj.average_rating = poi_data['average_rating']
+        obj.save()
+        self.stdout.write(self.style.SUCCESS(f'external_id: {poi_data['external_id']} successfully saved'))
+        return True

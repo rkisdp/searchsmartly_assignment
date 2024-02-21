@@ -37,7 +37,7 @@ docker exec -it <container id> bash
 ```
 3. then you can test load data using this command:
 ```bash
-python manage.py load_data <path of file or files>
+python manage.py load_data <path of file or files present in your machine>
 ```
 
 ### Run Test Functionality of project
