@@ -43,7 +43,7 @@ python manage.py load_data <path of file or files>
 ### Run Test Functionality of project
 To run the test cases you can run the following command
 ```bash
-python manage.py load_data <path of file or files>
+python manage.py test
 ```
 
 
