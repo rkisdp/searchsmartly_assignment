@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1111,
+    "name": "Statue of Liberty",
+    "coordinates": {"latitude": 40.6892, "longitude": -74.0445},
+    "category": "Monument",
+    "ratings": 4.5,
+    "description": "The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in New York Harbor in New York City."
+  },
+  {
+    "id": 1112,
+    "name": "Eiffel Tower",
+    "coordinates": {"latitude": 48.8584, "longitude": 2.2945},
+    "category": "Monument",
+    "ratings": 4.8,
+    "description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France."
+  },
+  {
+    "id": 1113,
+    "name": "Machu Picchu",
+    "coordinates": {"latitude": -13.1631, "longitude": -72.545},
+    "category": "Archaeological Site",
+    "ratings": 4.7,
+    "description": "Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru on a 2,430-meter mountain ridge."
+  },
+  {
+    "id": 1114,
+    "name": "Taj Mahal",
+    "coordinates": {"latitude": 27.1751, "longitude": 78.0421},
+    "category": "Monument",
+    "ratings": 4.9,
+    "description": "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra."
+  },
+  {
+    "id": 1115,
+    "name": "Great Wall of China",
+    "coordinates": {"latitude": 40.4319, "longitude": 116.5704},
+    "category": "Monument",
+    "ratings": 4.7,
+    "description": "The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials, generally built along an east-to-west line across the historical northern borders of China to protect the Chinese states and empires against the raids and invasions of the various nomadic groups of the Eurasian Steppe."
+  }
+]

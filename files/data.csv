@@ -1,0 +1,6 @@
+poi_id,poi_name,poi_latitude,poi_longitude,poi_category,poi_ratings
+111,Statue of Liberty,40.6892,-74.0445,Monument,4.5
+222,Eiffel Tower,48.8584,2.2945,Monument,4.8
+333,Machu Picchu,-13.1631,-72.545,Archaeological Site,4.7
+444,Taj Mahal,27.1751,78.0421,Monument,4.9
+555,Great Wall of China,40.4319,116.5704,Monument,4.7

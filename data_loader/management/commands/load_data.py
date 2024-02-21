@@ -96,5 +96,4 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f'data with external_id: {poi_data['external_id']} successfully saved'))
             return True
         except OperationalError:
-            self.stdout.write(self.style.ERROR(f'database connection lost'))
-            return False
+            raise CommandError(f'database connection lost')

@@ -1,0 +1,42 @@
+<points_of_interest>
+  <point_of_interest>
+    <pid>101</pid>
+    <pname>Statue of Liberty</pname>
+    <platitude>40.6892</platitude>
+    <plongitude>-74.0445</plongitude>
+    <pcategory>Monument</pcategory>
+    <pratings>4.5</pratings>
+  </point_of_interest>
+  <point_of_interest>
+    <pid>202</pid>
+    <pname>Eiffel Tower</pname>
+    <platitude>48.8584</platitude>
+    <plongitude>2.2945</plongitude>
+    <pcategory>Monument</pcategory>
+    <pratings>4.8</pratings>
+  </point_of_interest>
+  <point_of_interest>
+    <pid>303</pid>
+    <pname>Machu Picchu</pname>
+    <platitude>-13.1631</platitude>
+    <plongitude>-72.545</plongitude>
+    <pcategory>Archaeological Site</pcategory>
+    <pratings>4.7</pratings>
+  </point_of_interest>
+  <point_of_interest>
+    <pid>404</pid>
+    <pname>Taj Mahal</pname>
+    <platitude>27.1751</platitude>
+    <plongitude>78.0421</plongitude>
+    <pcategory>Monument</pcategory>
+    <pratings>4.9</pratings>
+  </point_of_interest>
+  <point_of_interest>
+    <pid>505</pid>
+    <pname>Great Wall of China</pname>
+    <platitude>40.4319</platitude>
+    <plongitude>116.5704</plongitude>
+    <pcategory>Monument</pcategory>
+    <pratings>4.7</pratings>
+  </point_of_interest>
+</points_of_interest>
